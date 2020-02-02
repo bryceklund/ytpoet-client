@@ -1,26 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import { Switch } from 'react-router'
+import { HashRouter, Route } from 'react-router-dom'
+import Main from './main/main'
+import Splash from './splash/splash'
+import Results from './results/results'
+import HeadFoot from './nav-footer/nav-footer'
+import Loading from './loading/loading'
 import './App.css';
 
+const { Nav, Footer } = HeadFoot
+
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+      <HashRouter>
+        <Nav />
+          <React.Fragment className="App">
+            <Route exact path='/' component={Splash} />
+            <Route path='/home' render={() => <Main />} />
+            <Route path='/result' component={Results} />
+            <Route path='/poem/:poemId'>
+              <Results />
+            </Route>
+          </React.Fragment>
+          <Route path='/loading' component={Loading} />
+        <Footer />
+      </HashRouter>
+    )
 }
 
 export default App;

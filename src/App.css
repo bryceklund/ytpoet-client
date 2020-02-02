@@ -1,38 +1,257 @@
-.App {
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+  line-height: 1;
+  margin: 0;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+* {
+  box-sizing: border-box;
+}
+
+.nav {
+  margin-left: auto;
+  margin-right: auto;
+  background: gray;
+  height: 40px;
+}
+
+h1 {
+  font-size: 24pt;
   text-align: center;
+  margin: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+h2 {
+  font-size: 18pt;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.loading {
+  font-size: 36px;
+  text-align: center;
+  margin-top: 75px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.instructions {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 50px;
+  text-align: left;
+  max-width: 700px;
+  background-color: lightgray;
+}
+
+.continue-container {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  margin-top: 25px;
 }
 
-.App-link {
-  color: #61dafb;
+.continue {
+  font-size: 18px;
+  background-color: darkgray;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.input {
+  display: flex;
+  justify-content: center;
+  margin-top: 100px;
+}
+
+.url-settings {
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.url {
+  width: 65vw;
+  height: 30px;
+  border: 1px grey solid;
+  font-size: 22px;
+  padding-left: 5px;
+  margin-top: 5px;
+}
+
+.go {
+  border: 1px solid grey;
+  border-radius: 2px;
+  height: 40px;
+  background-color: gainsboro;
+  margin-left: 5px;
+  text-decoration: none;
+  color: black;
+  cursor: default;
+  font-size: 20px;
+  padding: 5px;
+}
+
+.go a {
+
+}
+
+.toggle-settings {
+  border: 1px solid lightgray;
+  border-radius: 2px;
+}
+
+fieldset {
+  border: none;
+}
+
+.poem-type, .syllables, .lines {
+  border: 1px solid lightgray;
+  margin: 5px;
+}
+
+.syllables, .lines {
+  width: 20px;
+}
+
+.settings {
+  display: flex;
+  flex-direction: column;
+  margin-top: 5px;
+}
+
+.setting-container {
+  margin: 1px;
+}
+
+.sample-poems-label {
+  position: fixed;
+  bottom: 100px;
+  left: 5px;
+  font-style: italic;
+}
+
+.sample-poems {
+  width: 100%;
+  height: 35px;
+  background-color: lightgray;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  font-style: italic;
+  position: fixed;
+  bottom: 50px;
+}
+
+
+.back-regen-buttons {
+  display: flex;
+  justify-content: space-between;
+  width: 150px;
+  margin-top: 25px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.results {
+  max-width: 500px;
+  border: 1px solid black;
+  border-bottom: 3px solid black;
+  border-right: 3px solid black;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  padding: 15px;
+}
+
+.poem-body {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+  margin-top: 20px;
+}
+
+.poem-line {
+  margin-bottom: 15px;
+}
+
+.share-buttons {
+  display: flex;
+  width: 278px;
+  justify-content: space-between;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+}
+
+footer {
+  position: fixed;
+  bottom: 15px;
+  left: 15px;
+}
+
+@media screen and (min-width: 540px) {
+  .results {
+    width: 500px;
+    margin-left: auto;
+    margin-right: auto;
   }
-  to {
-    transform: rotate(360deg);
+
+  .poem-line {
+    margin-bottom: 25px;
+  }
+}
+
+@media screen and (min-width: 700px) {
+  .url {
+    width: 475px;
+  }
+  .sample-poems-label {
+    left: 20px;
+  }
+  .input {
+    margin-top: 150px;
   }
 }
