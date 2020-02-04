@@ -60,7 +60,8 @@ h1 {
 }
 
 h2 {
-  font-size: 18pt;
+  font-size: 22pt;
+  font-weight: bold;
 }
 
 .loading {
@@ -127,10 +128,6 @@ h2 {
   cursor: default;
   font-size: 20px;
   padding: 5px;
-}
-
-.go a {
-
 }
 
 .toggle-settings {
@@ -206,6 +203,11 @@ fieldset {
   padding: 15px;
 }
 
+.poem-title {
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
 .poem-body {
   display: flex;
   flex-direction: column;
@@ -215,6 +217,7 @@ fieldset {
 
 .poem-line {
   margin-bottom: 15px;
+  margin-top: 15px;
 }
 
 .share-buttons {

@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom'
 
-
-
 const Main = () => {
     const [ poemType, setPoemType ] = useState('haiku')
     const [ syllables, setSyllables ] = useState(0)

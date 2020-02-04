@@ -4,12 +4,29 @@ import { Link } from 'react-router-dom'
 
 const Results = (props) => {
   const [ loading, setLoading ] = useState(false)
+  const [ poemLines, setPoemLines ] = useState([])
+  const [ poemTitle, setPoemTitle ] = useState('')
+
   const options = props.location.state
+  //const data = apiResult.items.map(c => c.snippet.topLevelComment.snippet.textDisplay)
+  const demoData = {
+                    title: 'griffin',
+                    body: [ "I like this robot", 
+                            "THE ULTIMATE ALPHABET", 
+                            "literally just", ]
+                    }
+
+  function displayPoem(data) {
+    let tempLines = []
+    data.body.forEach((line, i) => tempLines.push(<p key={`${i}`} className='poem-line'>{line}</p>))
+    setPoemLines(tempLines)
+    setPoemTitle(data.title)
+  }
+              
   function generatePoetry(options) {
     const { url, type, syllables, lines, rhyme } = options
     setLoading(true)
     console.log(url, type, syllables, lines, rhyme)
-
     setTimeout(function() { //simluate API call
       setLoading(false)
       return
@@ -23,13 +40,16 @@ const Results = (props) => {
     //push chunks to an array in state
     //iterate through array, appending to the '.poem-body'
     //loading = false
+    displayPoem(demoData)
   }
+
   useEffect(() => {
     generatePoetry(options)
   }, [])
+
   if (loading) {
     return <Loading loading={loading} />
-  } else {
+  } else if (poemLines.length && poemTitle) {
     return (
         <div className='poem-results'>
           <div className='back-regen-buttons'>
@@ -39,13 +59,9 @@ const Results = (props) => {
                                                                           }}>regenerate</button>
           </div>
           <div className='results'>
-            <h2 className='poem-title'>Poem Title</h2>
+            <h2 className='poem-title'>{poemTitle}</h2>
             <div className='poem-body'>
-              <p className='poem-line'>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
-              <p className='poem-line'>Vivamus bibendum magna ac sem consectetur dictum</p>
-              <p className='poem-line'>Maecenas non mi rhoncus, lacinia arcu ut, maximus metus</p>
-              <p className='poem-line'>Curabitur feugiat turpis at justo auctor rhoncus quis non purus</p>
-              <p className='poem-line'>Sed pretium eros iaculis mi viverra, quis rhoncus lectus porta</p>
+              {poemLines}
             </div>
           </div>
           <div className='share-buttons'>
@@ -56,6 +72,12 @@ const Results = (props) => {
             <a href='' target='_blank'>copy link</a>
           </div>
         </div>
+    )
+  } else {
+    return (
+      <div className='poem-results'>
+            
+      </div>
     )
   }
 }

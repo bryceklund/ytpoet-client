@@ -6,7 +6,7 @@ const Splash = () => {
         <div>
             <p className='instructions'>
                 [welcome instructions]<br />
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus bibendum magna ac sem consectetur dictum. Maecenas non mi rhoncus, lacinia arcu ut, maximus metus. Curabitur feugiat turpis at justo auctor rhoncus quis non purus. Sed pretium eros iaculis mi viverra, quis rhoncus lectus porta. Curabitur vitae odio justo. Nullam vitae commodo augue. Cras vitae metus nec lectus luctus faucibus id id augue.
+                Hello and welcome to ytPoet! To get started, paste a link in the box and hit "GO". Don't actually paste a link in there though, this is just a beta. You can hit "GO" though.
             <br />
             </p>
             <div className='continue-container'>
