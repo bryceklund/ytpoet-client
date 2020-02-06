@@ -24,13 +24,27 @@ const Results = (props) => {
   }
               
   function generatePoetry(options) {
-    const { url, type, syllables, lines, rhyme } = options
+    const { url, type, syllables, lines, profanity } = options
+    const apiUrl = `http://localhost:8000/generate?url=${url}&profanity=${profanity}`
+    const apiOptions = { 
+                          'method': 'POST',
+                          headers: {
+                            'Content-Type': 'application/json'
+                          },
+                          body: {
+                            type, 
+                            syllables, 
+                            lines,  
+                          }
+                        }
     setLoading(true)
-    console.log(url, type, syllables, lines, rhyme)
+    fetch(apiUrl, apiOptions)
+        .then(res => console.log(res))
+        .catch(err => console.error(err))
     setTimeout(function() { //simluate API call
       setLoading(false)
       return
-    }, 3000)
+    }, 1000)
     //actual steps:
     //loading = true
     //get request for comments

@@ -5,9 +5,9 @@ const Main = () => {
     const [ poemType, setPoemType ] = useState('haiku')
     const [ syllables, setSyllables ] = useState(0)
     const [ lines, setLines ] = useState(0)
-    const [ rhyme, setRhyme ] = useState(false)
+    const [ profanity, setProfanity ] = useState(false)
     const [ url, setUrl ] = useState('')
-    const options = { poemType, syllables, lines, rhyme, url }
+    const options = { poemType, syllables, lines, profanity, url }
     return (
         <div>
             <div className='input'>
@@ -36,8 +36,8 @@ const Main = () => {
                                 <input className='lines' type='text' name='lines' onChange={(e) => setLines(parseInt(e.target.value))} />
                             </div>
                             <div className='setting-container'>
-                                <label htmlFor='rhyme'>try to rhyme it?</label>
-                                <input type='checkbox' name='rhyme' onClick={() => setRhyme(!rhyme)} />      
+                                <label htmlFor='profanity'>block profanity?</label>
+                                <input type='checkbox' name='profanity' onChange={(e) => setProfanity(!profanity)} />      
                             </div>
                         </div>
                     </fieldset>

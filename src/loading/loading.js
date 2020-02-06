@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 const Loading = (props) => {
     useEffect(() => {
         function showLetters() {
-            const word = ' GENERATE '
+            const word = ' GENERATING '
             const element = document.getElementById('loading')
             for (let i = 0; i < word.length + 1; i++) {
                 if (!props.loading) {
