@@ -1,12 +1,19 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react'
+import { Link, useHistory } from 'react-router-dom'
+import useRouter from 'use-react-router'
 import Loading from '../loading/loading'
-import { Link } from 'react-router-dom'
+import { saveAs } from 'file-saver'
+import html2canvas from 'html2canvas';
+import download from 'downloadjs'
 
 const Results = (props) => {
   const [ loading, setLoading ] = useState(false)
   const [ poemLines, setPoemLines ] = useState([])
   const [ poemTitle, setPoemTitle ] = useState('')
+  const [ copyLink, setCopyLink ] = useState(null)
+  const [ copyStatus, setCopyStatus ] = useState('')
 
+  const history = useHistory()
   const options = props.location.state
   //const data = apiResult.items.map(c => c.snippet.topLevelComment.snippet.textDisplay)
   const demoData = {
@@ -16,54 +23,143 @@ const Results = (props) => {
                             "literally just", ]
                     }
 
-  function displayPoem(data) {
-    let tempLines = []
-    data.body.forEach((line, i) => tempLines.push(<p key={`${i}`} className='poem-line'>{line}</p>))
-    setPoemLines(tempLines)
-    setPoemTitle(data.title)
+  function downloadPoem() {
+    html2canvas(document.getElementById('results'))
+      .then((canvas) => {
+        canvas.toBlob((blob) => {
+          saveAs(blob, `${poemTitle}.png`)
+        })
+    })
   }
-              
+
+  function copyToolTip(message, id) {
+    const element = document.getElementById('copy-status').classList
+    element.remove('hidden')
+    setCopyStatus(message)
+    setTimeout(() => {
+      element.add('hidden')
+      if (id) {
+        history.push(`/poem/${id}`)
+      }
+    }, 2000)
+  }
+
+  function savePoem() {
+    //push data to db, return uuid and generate url
+    const bodyData = {
+      title: poemTitle,
+      body: poemLines
+    }
+    const apiUrl = `http://localhost:8000/api/poem`
+    const apiOptions = {
+      'method': 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer swag420' 
+      },
+      body: JSON.stringify(bodyData)
+    }
+  
+    fetch(apiUrl, apiOptions)
+      .then(res => res.json())
+      .then(data => {
+        return data.poemId
+      })
+      .then(id => {
+        // send to clipboard, fb connector, ig connector, or twitter connector depending on selection
+        if (id) {
+          toClipBoard(id)
+        } else {
+          copyToolTip('Failed to copy!')
+          throw new Error('Failed to copy')
+        }
+      })
+      .catch(err => console.error(err))
+  }
+
+  function displayPoem(data) {
+    setPoemLines(data.body)
+    setPoemTitle(data.title)
+    setLoading(false)
+  }
+
+  function displayError(err) {
+    setLoading('error')
+  }
+
+  function getPoem(id) {
+      //make call to db to get poem
+      const tempId = '643d1896-e465-4753-8a14-c5fc80427653'
+      const apiUrl = `http://localhost:8000/api/poem/${id}`
+      const apiOptions = {
+                            'method': 'GET',
+                            headers: {
+                              'Content-Type': 'application/json',
+                              'Authorization': 'Bearer swag420' 
+                            }
+                          }
+      try {
+        fetch(apiUrl, apiOptions)
+          .then(res => res.json())
+          .then(data => displayPoem(data))
+          .catch(err => displayError(err))
+      } catch {
+        return false
+      }
+  }
+  
+  function toClipBoard(id) { //all set! just need a tooltip to notify on copy success/failure
+    let url = `localhost:3000/poem/${id}`
+
+    try {
+      let textArea = document.createElement("textarea")
+      textArea.value = url
+      textArea.setAttribute('readonly', '')
+      textArea.style.position='-9999px'
+      document.body.appendChild(textArea)
+      textArea.select()
+      document.execCommand('copy')
+      document.body.removeChild(textArea)
+      copyToolTip('Copied!', id)
+      return true
+    } catch {
+      copyToolTip('Failed to copy!') 
+      return false
+    }
+
+  }
+
   function generatePoetry(options) {
-    const { url, type, syllables, lines, profanity } = options
-    const apiUrl = `http://localhost:8000/generate?url=${url}&profanity=${profanity}`
+    const apiUrl = `http://localhost:8000/api/generate`
     const apiOptions = { 
                           'method': 'POST',
                           headers: {
-                            'Content-Type': 'application/json'
+                            'Content-Type': 'application/json',
+                            'Authorization': 'Bearer swag420' 
                           },
-                          body: {
-                            type, 
-                            syllables, 
-                            lines,  
-                          }
+                          body: JSON.stringify(options)
                         }
     setLoading(true)
     fetch(apiUrl, apiOptions)
-        .then(res => console.log(res))
-        .catch(err => console.error(err))
-    setTimeout(function() { //simluate API call
-      setLoading(false)
-      return
-    }, 1000)
-    //actual steps:
-    //loading = true
-    //get request for comments
-    //parse out comment data
-    //choose random chunk
-    //use syllable to find n chunks of words
-    //push chunks to an array in state
-    //iterate through array, appending to the '.poem-body'
-    //loading = false
-    displayPoem(demoData)
+        .then(res => res.json())
+        .then(data => displayPoem(data))
+        .catch(err => displayError(err))
   }
 
   useEffect(() => {
-    generatePoetry(options)
+    if (options) {
+      setCopyLink('new')
+      generatePoetry(options)
+    } else {
+      setCopyLink('copy')
+      const { poemId } = props.match.params
+      getPoem(poemId)
+    }
   }, [])
 
   if (loading) {
     return <Loading loading={loading} />
-  } else if (poemLines.length && poemTitle) {
+  } else if (poemLines && poemLines.length && poemTitle) {
     return (
         <div className='poem-results'>
           <div className='back-regen-buttons'>
@@ -72,19 +168,21 @@ const Results = (props) => {
                                                                             generatePoetry(options)
                                                                           }}>regenerate</button>
           </div>
-          <div className='results'>
+          <div className='results' id='results'>
             <h2 className='poem-title'>{poemTitle}</h2>
             <div className='poem-body'>
-              {poemLines}
+              {poemLines.map((line, i) => {
+                return <p key={`${i}`} className='poem-line'>{line}</p>
+              })}
             </div>
           </div>
           <div className='share-buttons'>
             <a href='' target='_blank'>fb</a>
-            <a href='' target='_blank'>ig</a>
-            <a href='' target='_blank'>twitter</a>
-            <a href='' target='_blank'>download</a>
-            <a href='' target='_blank'>copy link</a>
+            <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">twitter</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+            <button onClick={() => downloadPoem()}>download</button>
+            <button onClick={() => copyLink === 'new' ? savePoem() : toClipBoard(props.match.url.split('/')[2])}>generate link</button>
           </div>
+          <p className='copy-status-container'><span id='copy-status' className='copy-status hidden'>{copyStatus}</span></p>
         </div>
     )
   } else {
@@ -96,4 +194,4 @@ const Results = (props) => {
   }
 }
 
-export default Results;
+export default Results

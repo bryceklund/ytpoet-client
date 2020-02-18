@@ -1,8 +1,9 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const Nav = () => {
     return (
-        <nav className='nav'><h1>ytPoet</h1></nav>
+        <nav className='nav'><h1><Link className='hero-link' to='/'>ytPoet</Link></h1></nav>
     )
 }
 
