@@ -50,7 +50,7 @@ const Results = (props) => {
       title: poemTitle,
       body: poemLines
     }
-    const apiUrl = `http://infinite-sierra-05503.herokuapp.com/api/poem`
+    const apiUrl = `https://infinite-sierra-05503.herokuapp.com/api/poem`
     const apiOptions = {
       'method': 'POST',
       headers: {
@@ -90,7 +90,7 @@ const Results = (props) => {
   function getPoem(id) {
       //make call to db to get poem
       const tempId = '643d1896-e465-4753-8a14-c5fc80427653'
-      const apiUrl = `http://infinite-sierra-05503.herokuapp.com/api/poem/${id}`
+      const apiUrl = `https://infinite-sierra-05503.herokuapp.com/api/poem/${id}`
       const apiOptions = {
                             'method': 'GET',
                             headers: {
@@ -130,7 +130,7 @@ const Results = (props) => {
   }
 
   function generatePoetry(options) {
-    const apiUrl = `http://infinite-sierra-05503.herokuapp.com/api/generate`
+    const apiUrl = `https://infinite-sierra-05503.herokuapp.com/api/generate`
     const apiOptions = { 
                           'method': 'POST',
                           headers: {
