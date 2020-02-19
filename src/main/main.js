@@ -19,7 +19,6 @@ const Main = () => {
         }
     }
     function validate(item, type) {
-        console.log(item, type)
         switch(type) {
             case 'url':
                 setUrl(item)
@@ -31,7 +30,6 @@ const Main = () => {
                 setLines(item)
             break
         }
-        console.log(url)
     }
     useEffect(() => {
         if (url) {
@@ -45,7 +43,6 @@ const Main = () => {
                 setGoAllowed(false)
                 setErrorMessage('please enter a valid youtube url!')
             } else {
-                console.log('allowing go')
                 setGoAllowed(true)
                 setErrorMessage('')
             }

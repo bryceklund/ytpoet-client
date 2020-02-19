@@ -50,7 +50,7 @@ const Results = (props) => {
       title: poemTitle,
       body: poemLines
     }
-    const apiUrl = `http://localhost:8000/api/poem`
+    const apiUrl = `http://infinite-sierra-05503.herokuapp.com/api/poem`
     const apiOptions = {
       'method': 'POST',
       headers: {
@@ -79,7 +79,7 @@ const Results = (props) => {
 
   function displayPoem(data) {
     setPoemLines(data.body)
-    setPoemTitle(data.title)
+    setPoemTitle(data.title.trim)
     setLoading(false)
   }
 
@@ -90,7 +90,7 @@ const Results = (props) => {
   function getPoem(id) {
       //make call to db to get poem
       const tempId = '643d1896-e465-4753-8a14-c5fc80427653'
-      const apiUrl = `http://localhost:8000/api/poem/${id}`
+      const apiUrl = `http://infinite-sierra-05503.herokuapp.com/api/poem/${id}`
       const apiOptions = {
                             'method': 'GET',
                             headers: {
@@ -109,7 +109,7 @@ const Results = (props) => {
   }
   
   function toClipBoard(id) { //all set! just need a tooltip to notify on copy success/failure
-    let url = `localhost:3000/poem/${id}`
+    let url = `ytpoet.now.sh/poem/${id}`
 
     try {
       let textArea = document.createElement("textarea")
@@ -130,7 +130,7 @@ const Results = (props) => {
   }
 
   function generatePoetry(options) {
-    const apiUrl = `http://localhost:8000/api/generate`
+    const apiUrl = `http://infinite-sierra-05503.herokuapp.com/api/generate`
     const apiOptions = { 
                           'method': 'POST',
                           headers: {
@@ -160,6 +160,7 @@ const Results = (props) => {
   if (loading) {
     return <Loading loading={loading} />
   } else if (poemLines && poemLines.length && poemTitle) {
+    console.log(`https://ytpoet.now.sh/poem/${props.match.url.split('/')[2]}`)
     return (
         <div className='poem-results'>
           <div className='back-regen-buttons'>
@@ -177,8 +178,11 @@ const Results = (props) => {
             </div>
           </div>
           <div className='share-buttons'>
-            <a href='' target='_blank'>fb</a>
-            <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">twitter</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+            <div class={`fb-share-button ${options ? 'hidden' : ''}`}
+              data-href={`https://ytpoet.now.sh/poem/${props.match.url.split('/')[2]}`}
+              data-layout="button">
+            </div>
+            <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class={`twitter-share-button ${options ? 'hidden' : ''}`} data-show-count="false">twitter</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
             <button onClick={() => downloadPoem()}>download</button>
             <button onClick={() => copyLink === 'new' ? savePoem() : toClipBoard(props.match.url.split('/')[2])}>generate link</button>
           </div>
