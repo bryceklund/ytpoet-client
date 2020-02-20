@@ -78,6 +78,7 @@ const Results = (props) => {
   }
 
   function displayPoem(data) {
+    console.log(data)
     setPoemLines(data.body)
     setPoemTitle(data.title.trim)
     setLoading(false)
@@ -143,9 +144,6 @@ const Results = (props) => {
     setLoading(true)
     fetch(apiUrl, apiOptions)
         .then(res => res.json())
-        .then(stuff => {
-          console.log(stuff)
-        })
         .then(data => displayPoem(data))
         .catch(err => displayError(err))
   }
