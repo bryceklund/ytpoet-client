@@ -143,6 +143,9 @@ const Results = (props) => {
     setLoading(true)
     fetch(apiUrl, apiOptions)
         .then(res => res.json())
+        .then(stuff => {
+          console.log(stuff)
+        })
         .then(data => displayPoem(data))
         .catch(err => displayError(err))
   }
