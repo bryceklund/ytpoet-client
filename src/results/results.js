@@ -84,6 +84,7 @@ const Results = (props) => {
   }
 
   function displayError(err) {
+    console.log(err)
     setLoading('error')
   }
 

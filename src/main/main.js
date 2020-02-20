@@ -93,7 +93,7 @@ const Main = () => {
             </div>
             <script src="script.js"></script>
         </div>
-    );
-};
+    )
+}
 
 export default Main;
