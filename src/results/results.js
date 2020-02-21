@@ -170,6 +170,7 @@ const Results = (props) => {
           <meta name="twitter:title" content="Small Island Developing States Photo Submission" />
           <meta name="twitter:description" content="View the album on Flickr." />
           <meta name="twitter:image" content="https://farm6.staticflickr.com/5510/14338202952_93595258ff_z.jpg" />
+          <meta property="og:type" content="website" />
           <div className='back-regen-buttons'>
             <Link to='/home'>back</Link><button disabled={options ? false : true} onClick={(e) => {
                                                                             e.preventDefault()
