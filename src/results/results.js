@@ -165,7 +165,7 @@ const Results = (props) => {
     console.log(`https://ytpoet.now.sh/poem/${props.match.url.split('/')[2]}`)
     return (
         <div className='poem-results'>
-          <meta name="twitter:card" content="summary" />
+          <meta name="twitter:card" content="summary_large_image" />
           <meta name="twitter:site" content="@flickr" />
           <meta name="twitter:title" content="Small Island Developing States Photo Submission" />
           <meta name="twitter:description" content="View the album on Flickr." />
