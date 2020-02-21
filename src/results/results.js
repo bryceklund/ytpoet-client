@@ -184,7 +184,7 @@ const Results = (props) => {
               data-href={`https://ytpoet.now.sh/poem/${props.match.url.split('/')[2]}`}
               data-layout="button">
             </div>
-            <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class={`twitter-share-button ${options ? 'hidden' : ''}`} data-show-count="false">twitter</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+            <a href={props.match.url} class={`twitter-share-button ${options ? 'hidden' : ''}`} data-show-count="false">twitter</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
             <button onClick={() => downloadPoem()}>download</button>
             <button onClick={() => copyLink === 'new' ? savePoem() : toClipBoard(props.match.url.split('/')[2])}>generate link</button>
           </div>
