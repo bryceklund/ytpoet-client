@@ -3,6 +3,7 @@ import { Link, useHistory } from 'react-router-dom'
 import useRouter from 'use-react-router'
 import Loading from '../loading/loading'
 import { saveAs } from 'file-saver'
+import { Helmet } from 'react-helmet'
 import html2canvas from 'html2canvas';
 import download from 'downloadjs'
 
@@ -165,7 +166,7 @@ const Results = (props) => {
     console.log(`https://ytpoet.now.sh/poem/${props.match.url.split('/')[2]}`)
     return (
         <div className='poem-results'>
-        <head>
+        <Helmet>
           <meta content="text/html; charset=UTF-8" name="Content-Type" />
           <meta name="twitter:card" content="summary_large_image" />
           <meta name="twitter:site" content="@nytimes" />
@@ -174,7 +175,7 @@ const Results = (props) => {
           <meta name="twitter:description" content="NEWARK - The guest list and parade of limousines with celebrities emerging from them seemed more suited to a red carpet event in Hollywood or New York than than a gritty stretch of Sussex Avenue near the former site of the James M. Baxter Terrace public housing project here." />
           <meta name="twitter:image" content="http://graphics8.nytimes.com/images/2012/02/19/us/19whitney-span/19whitney-span-articleLarge.jpg" />
           <meta property="og:type" content="website" />
-        </head>
+        </Helmet>
           <div className='back-regen-buttons'>
             <Link to='/home'>back</Link><button disabled={options ? false : true} onClick={(e) => {
                                                                             e.preventDefault()
