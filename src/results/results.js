@@ -184,7 +184,7 @@ const Results = (props) => {
               data-href={`https://ytpoet.now.sh/poem/${props.match.url.split('/')[2]}`}
               data-layout="button">
             </div>
-            <a href={`https://twitter.com/intent/tweet?text=${props.match.url}`} class={`twitter-share-button ${options ? 'hidden' : ''}`} data-show-count="false">
+            <a href={`https://twitter.com/intent/tweet?text=https://ytpoet.now.sh${props.match.url}`} class={`twitter-share-button ${options ? 'hidden' : ''}`} data-show-count="false">
               twitter</a>
             
             <button onClick={() => downloadPoem()}>download</button>
