@@ -3,7 +3,6 @@ import { Link, useHistory } from 'react-router-dom'
 import useRouter from 'use-react-router'
 import Loading from '../loading/loading'
 import { saveAs } from 'file-saver'
-import { Helmet } from 'react-helmet'
 import html2canvas from 'html2canvas';
 import download from 'downloadjs'
 
@@ -166,14 +165,6 @@ const Results = (props) => {
     console.log(`https://ytpoet.now.sh/poem/${props.match.url.split('/')[2]}`)
     return (
         <div className='poem-results'>
-        <Helmet>
-          <meta content="text/html; charset=UTF-8" name="Content-Type" />
-          <meta name="twitter:card" content="summary_large_image" />
-          <meta name="twitter:title" content="check my poem on ytPoet" />
-          <meta name="twitter:description" content="bing bong bing bong bing bong bing bong bing bong " />
-          <meta name="twitter:image" content="http://graphics8.nytimes.com/images/2012/02/19/us/19whitney-span/19whitney-span-articleLarge.jpg" />
-          <meta property="og:type" content="website" />
-        </Helmet>
           <div className='back-regen-buttons'>
             <Link to='/home'>back</Link><button disabled={options ? false : true} onClick={(e) => {
                                                                             e.preventDefault()
