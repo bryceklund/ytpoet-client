@@ -92,6 +92,8 @@ const Main = () => {
                             <select className='poem-type' name='poem-type' onChange={(e) => setPoemType(e.target.value)}>
                                 <option value='haiku'>haiku</option>
                                 <option value='sonnet'>sonnet</option>
+                                <option value='rondel'>rondel</option>
+                                <option value='indriso'>indriso</option>
                                 <option value='custom'>custom</option>
                             </select>
                             </div>
@@ -104,10 +106,10 @@ const Main = () => {
                                 <label htmlFor='lines'>number of lines (1-20):</label>
                                 <input className='lines' type='text' name='lines' onChange={(e) => validate(parseInt(e.target.value), 'lines')} />
                             </div>
-                            <div className='setting-container'>
-                                <label htmlFor='profanity'>block profanity?</label>
-                                <input type='checkbox' name='profanity' onChange={(e) => setProfanity(!profanity)} />      
-                            </div>
+                        </div>
+                        <div className='setting-container'>
+                            <label htmlFor='profanity'>block profanity?</label>
+                            <input type='checkbox' name='profanity' onChange={(e) => setProfanity(!profanity)} />      
                         </div>
                     </fieldset>
                 </form>
