@@ -53,6 +53,8 @@ const Main = () => {
             break
         }
     }
+
+    useEffect(getRandom(), [])
     useEffect(() => {
         if (url) {
             if (poemType === 'custom' && (lines < 1 || lines > 20 || isNaN(lines))) {
