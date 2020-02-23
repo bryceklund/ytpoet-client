@@ -26,7 +26,6 @@ const Main = () => {
         fetch(url, options)
             .then(res => res.json())
             .then(data => {
-                console.log(data)
                 return data.id
             })
             .then(id => setRandomId(id))
@@ -70,7 +69,7 @@ const Main = () => {
                 setErrorMessage('')
             }
         }
-    }, getRandom())
+    }, [getRandom()])
     return (
         <div>
             <div className='input'>
