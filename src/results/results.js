@@ -94,7 +94,6 @@ const Results = (props) => {
   }
 
   function displayPoem(data) {
-    console.log(data, data.body, data.title)
     setPoemLines(data.body)
     setPoemTitle(data.title.trim())
     setLoading(false)
