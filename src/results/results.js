@@ -150,6 +150,16 @@ const Results = (props) => {
         .catch(err => displayError(err))
   }
 
+  function loadFb() {
+    (function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'))
+  }
+
   useEffect(() => {
     if (options) {
       setCopyLink('new')
@@ -158,6 +168,7 @@ const Results = (props) => {
       setCopyLink('copy')
       const { poemId } = props.match.params
       getPoem(poemId)
+      loadFb()
     }
   }, [])
 
@@ -186,7 +197,7 @@ const Results = (props) => {
                 <a href={link} target='_blank'>Share this on Facebook</a>
               )}
             </ShareLink>
-            <div class="fb-share-button" data-href={`https://ytpoet.now.sh${props.match.url}`}  data-layout="button" data-size="small"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></div>
+            <div class="fb-share-button" data-href={`https://ytpoet.now.sh${props.match.url}`}  data-layout="button" data-size="small"></div>
             <TwitterShareButton url={`https://ytpoet.now.sh${props.match.url}`} options={{ text: 'check out my poem on #ytpoet' }} />
             <button onClick={() => downloadPoem()}>download</button>
             <button onClick={() => copyLink === 'new' ? savePoem() : toClipBoard(props.match.url.split('/')[2])}>generate link</button>
