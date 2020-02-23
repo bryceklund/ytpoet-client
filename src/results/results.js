@@ -184,9 +184,9 @@ const Results = (props) => {
               data-href={`https://ytpoet.now.sh/poem/${props.match.url.split('/')[2]}`}
               data-layout="button">
             </div>
-            <a href={`https://twitter.com/intent/tweet?text=https://ytpoet.now.sh${props.match.url}`} class={`twitter-share-button ${options ? 'hidden' : ''}`} data-show-count="false">
+            <a href={`https://twitter.com/intent/tweet?text=https://ytpoet.now.sh${props.match.url}`} className={`twitter-share-button ${options ? 'hidden' : ''}`} data-show-count="false">
               twitter</a>
-            
+              <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
             <button onClick={() => downloadPoem()}>download</button>
             <button onClick={() => copyLink === 'new' ? savePoem() : toClipBoard(props.match.url.split('/')[2])}>generate link</button>
           </div>
