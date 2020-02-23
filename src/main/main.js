@@ -66,8 +66,7 @@ const Main = () => {
                 setErrorMessage('')
             }
         }
-        getRandom()
-    })
+    }, getRandom())
     return (
         <div>
             <div className='input'>
@@ -102,7 +101,7 @@ const Main = () => {
                     </fieldset>
                 </form>
             </div>
-            <p className='sample-poems-label'><a href={`/poem/${randomId}`} target='_blank' className='sample-poem'>random poem</a></p>
+            <p className='sample-poems-label'><a href={`/poem/${randomId}`} className='sample-poem'>random poem</a></p>
             <script src="script.js"></script>
         </div>
     )
