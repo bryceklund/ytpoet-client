@@ -24,7 +24,10 @@ const Main = () => {
         }
         
         fetch(url, options)
-            .then(res => res.json())
+            .then(res => {
+                console.log(res)
+                return res.json()
+            })
             .then(id => setRandomId(id))
             .catch(err => console.error(err))
     }
