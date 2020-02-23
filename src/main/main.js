@@ -9,7 +9,26 @@ const Main = () => {
     const [ url, setUrl ] = useState('')
     const [ goAllowed, setGoAllowed ] = useState(false)
     const [ errorMessage, setErrorMessage ] = useState('')
+    const [ randomId, setRandomId ] = useState(null)
+
     const options = { poemType, syllables, lines, profanity, url }
+
+    function getRandom() {
+        const url = `https://infinite-sierra-05503.herokuapp.com/api/random`
+        const options = {
+          'method': 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer swag420' 
+          }
+        }
+        
+        fetch(url, options)
+            .then(res => res.json())
+            .then(id => setRandomId(id))
+            .catch(err => console.error(err))
+    }
+
     function checkUrl(url) {
         const regex = RegExp(/^((?:https?:)?\/\/)?((?:www|m)\.)?((?:youtube\.com|youtu.be))(\/(?:[\w\-]+\?v=|embed\/|v\/)?)([\w\-]+)(\S+)?$/)
         if (regex.test(url)) {
@@ -47,7 +66,7 @@ const Main = () => {
                 setErrorMessage('')
             }
         }
-
+        getRandom()
     })
     return (
         <div>
@@ -83,14 +102,7 @@ const Main = () => {
                     </fieldset>
                 </form>
             </div>
-            <p className='sample-poems-label'>check out some generated content:</p>
-            <div className='sample-poems'>
-                <a href='' target='_blank' className='sample-poem'>Poem 1</a>
-                <a href='' target='_blank' className='sample-poem'>Poem 2</a>
-                <a href='' target='_blank' className='sample-poem'>Poem 3</a>
-                <a href='' target='_blank' className='sample-poem'>Poem 4</a>
-                <a href='' target='_blank' className='sample-poem'>Poem 5</a>
-            </div>
+            <p className='sample-poems-label'><a href={`/poem/${randomId}`} target='_blank' className='sample-poem'>random poem</a></p>
             <script src="script.js"></script>
         </div>
     )

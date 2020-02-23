@@ -178,7 +178,7 @@ const Results = (props) => {
               })}
             </div>
           </div>
-          <div className='share-buttons'>
+          <div className={`share-buttons ${options ? '' : 'hidden'}`}>
             <FacebookShareButton url={`https://ytpoet.now.sh${props.match.url}`} quote='check out my poem on #ytpoet: '><FacebookIcon size={20} round={false} /></FacebookShareButton>
             <TwitterShareButton url={`https://ytpoet.now.sh${props.match.url}`} options={{ text: 'check out my poem on #ytpoet: ' }} />
             <button onClick={() => downloadPoem()}>download</button>
