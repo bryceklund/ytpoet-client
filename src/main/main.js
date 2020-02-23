@@ -9,9 +9,10 @@ const Main = () => {
     const [ url, setUrl ] = useState('')
     const [ goAllowed, setGoAllowed ] = useState(false)
     const [ errorMessage, setErrorMessage ] = useState('')
+    const [ randomId, setRandomId ] = useState(null)
 
     const options = { poemType, syllables, lines, profanity, url }
-    let randomId
+
 
     function getRandom() {
         const url = `https://infinite-sierra-05503.herokuapp.com/api/random`
@@ -26,8 +27,7 @@ const Main = () => {
         fetch(url, options)
             .then(res => res.json())
             .then(data => {
-                randomId = data.id
-                console.log(randomId)
+                setRandomId(data.id)
             })
             //.then(id => setRandomId(id))
             .catch(err => console.error(err))
@@ -71,7 +71,8 @@ const Main = () => {
                 setErrorMessage('')
             }
         }
-    }, getRandom())
+        getRandom()
+    }, [])
     return (
         <div>
             <div className='input'>
