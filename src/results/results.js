@@ -4,7 +4,7 @@ import Loading from '../loading/loading'
 import { saveAs } from 'file-saver'
 import html2canvas from 'html2canvas';
 import { TwitterShareButton } from 'react-twitter-embed'
-import { FacebookShareButton } from 'react-share'
+import { FacebookShareButton, FacebookIcon } from 'react-share'
 
 const Results = (props) => {
   const [ loading, setLoading ] = useState(false)
@@ -179,7 +179,7 @@ const Results = (props) => {
             </div>
           </div>
           <div className='share-buttons'>
-            <FacebookShareButton quote={'check out my poem on ytPoet: '} />
+            <FacebookShareButton><FacebookIcon size={32} round={false} /></FacebookShareButton>
             <TwitterShareButton url={`https://ytpoet.now.sh${props.match.url}`} options={{ text: 'check out my poem on #ytpoet: ' }} />
             <button onClick={() => downloadPoem()}>download</button>
             <button onClick={() => copyLink === 'new' ? savePoem() : toClipBoard(props.match.url.split('/')[2])}>generate link</button>
