@@ -5,6 +5,7 @@ import Loading from '../loading/loading'
 import { saveAs } from 'file-saver'
 import html2canvas from 'html2canvas';
 import { TwitterShareButton } from 'react-twitter-embed'
+import ShareLink from 'react-facebook-share-link'
 import download from 'downloadjs'
 
 const Results = (props) => {
@@ -163,7 +164,6 @@ const Results = (props) => {
   if (loading) {
     return <Loading loading={loading} />
   } else if (poemLines && poemLines.length && poemTitle) {
-    console.log(`https://ytpoet.now.sh/poem/${props.match.url.split('/')[2]}`)
     return (
         <div className='poem-results'>
           <div className='back-regen-buttons'>
@@ -181,10 +181,7 @@ const Results = (props) => {
             </div>
           </div>
           <div className='share-buttons'>
-            <div class={`fb-share-button ${options ? 'hidden' : ''}`}
-              data-href={`https://ytpoet.now.sh/poem/${props.match.url.split('/')[2]}`}
-              data-layout="button">
-            </div>
+            <ShareLink />
             <TwitterShareButton url={`https://ytpoet.now.sh${props.match.url}`} options={{ text: 'check out my poem on #ytpoet' }} />
             <button onClick={() => downloadPoem()}>download</button>
             <button onClick={() => copyLink === 'new' ? savePoem() : toClipBoard(props.match.url.split('/')[2])}>generate link</button>
