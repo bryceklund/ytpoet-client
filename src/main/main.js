@@ -22,12 +22,12 @@ const Main = () => {
             'Authorization': 'Bearer swag420' 
           }
         }
-        let result
         
         fetch(url, options)
             .then(res => res.json())
             .then(data => {
                 randomId = data.id
+                console.log(randomId)
             })
             //.then(id => setRandomId(id))
             .catch(err => console.error(err))
