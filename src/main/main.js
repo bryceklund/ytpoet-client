@@ -71,7 +71,7 @@ const Main = () => {
                 setErrorMessage('')
             }
         }
-    }, [getRandom()])
+    })
     return (
         <div>
             <div className='input'>
