@@ -27,7 +27,7 @@ const Main = () => {
             .then(res => res.json())
             .then(data => {
                 console.log(data)
-                return data
+                return data.id
             })
             .then(id => setRandomId(id))
             .catch(err => console.error(err))
