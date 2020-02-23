@@ -4,6 +4,7 @@ import useRouter from 'use-react-router'
 import Loading from '../loading/loading'
 import { saveAs } from 'file-saver'
 import html2canvas from 'html2canvas';
+import { TwitterShareButton } from 'react-twitter-embed'
 import download from 'downloadjs'
 
 const Results = (props) => {
@@ -184,6 +185,7 @@ const Results = (props) => {
               data-href={`https://ytpoet.now.sh/poem/${props.match.url.split('/')[2]}`}
               data-layout="button">
             </div>
+            <TwitterShareButton url={`https://twitter.com/intent/tweet?text=https://ytpoet.now.sh${props.match.url}`} options={{ text: 'check out my poem on #ytpoet' }} />
             <a href={`https://twitter.com/intent/tweet?text=https://ytpoet.now.sh${props.match.url}`} className={`twitter-share-button ${options ? 'hidden' : ''}`} data-show-count="false">
               twitter</a>
             <button onClick={() => downloadPoem()}>download</button>
