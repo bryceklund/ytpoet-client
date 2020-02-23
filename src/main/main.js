@@ -55,6 +55,8 @@ const Main = () => {
         }
     }
 
+    getRandom()
+
     useEffect(() => {
         if (url) {
             if (poemType === 'custom' && (lines < 1 || lines > 20 || isNaN(lines))) {
@@ -70,9 +72,8 @@ const Main = () => {
                 setGoAllowed(true)
                 setErrorMessage('')
             }
-        }
-        getRandom()
-    }, [])
+        }   
+    })
     return (
         <div>
             <div className='input'>
