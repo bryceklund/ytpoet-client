@@ -23,12 +23,12 @@ const Main = () => {
           }
         }
         
-        fetch(url, options)
+        return fetch(url, options)
             .then(res => res.json())
             .then(data => {
                 return data.id
             })
-            .then(id => setRandomId(id))
+            //.then(id => setRandomId(id))
             .catch(err => console.error(err))
     }
 
@@ -54,7 +54,6 @@ const Main = () => {
         }
     }
 
-    useEffect(getRandom(), [])
     useEffect(() => {
         if (url) {
             if (poemType === 'custom' && (lines < 1 || lines > 20 || isNaN(lines))) {
@@ -106,7 +105,7 @@ const Main = () => {
                     </fieldset>
                 </form>
             </div>
-            <p className='sample-poems-label'><a href={`/poem/${randomId}`} className='sample-poem'>random poem</a></p>
+            <p className='sample-poems-label'><a href={`/poem/${getRandom()}`} className='sample-poem'>random poem</a></p>
             <script src="script.js"></script>
         </div>
     )
