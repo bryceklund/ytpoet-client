@@ -186,7 +186,6 @@ const Results = (props) => {
             </div>
             <a href={`https://twitter.com/intent/tweet?text=https://ytpoet.now.sh${props.match.url}`} className={`twitter-share-button ${options ? 'hidden' : ''}`} data-show-count="false">
               twitter</a>
-              <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
             <button onClick={() => downloadPoem()}>download</button>
             <button onClick={() => copyLink === 'new' ? savePoem() : toClipBoard(props.match.url.split('/')[2])}>generate link</button>
           </div>
