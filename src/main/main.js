@@ -24,13 +24,17 @@ const Main = () => {
           }
         }
         
-        fetch(url, options)
+        if (!randomId) {
+            fetch(url, options)
             .then(res => res.json())
             .then(data => {
                 setRandomId(data.id)
             })
             //.then(id => setRandomId(id))
             .catch(err => console.error(err))
+        } else {
+            return
+        }
     }
 
     function checkUrl(url) {
