@@ -9,9 +9,9 @@ const Main = () => {
     const [ url, setUrl ] = useState('')
     const [ goAllowed, setGoAllowed ] = useState(false)
     const [ errorMessage, setErrorMessage ] = useState('')
-    const [ randomId, setRandomId ] = useState(null)
 
     const options = { poemType, syllables, lines, profanity, url }
+    let randomId
 
     function getRandom() {
         const url = `https://infinite-sierra-05503.herokuapp.com/api/random`
@@ -27,11 +27,10 @@ const Main = () => {
         fetch(url, options)
             .then(res => res.json())
             .then(data => {
-                result = data.id
+                randomId = data.id
             })
             //.then(id => setRandomId(id))
             .catch(err => console.error(err))
-        return result
     }
 
     function checkUrl(url) {
@@ -72,7 +71,7 @@ const Main = () => {
                 setErrorMessage('')
             }
         }
-    })
+    }, getRandom())
     return (
         <div>
             <div className='input'>
@@ -107,7 +106,7 @@ const Main = () => {
                     </fieldset>
                 </form>
             </div>
-            <p className='sample-poems-label'><a href={`/poem/${getRandom()}`} className='sample-poem'>random poem</a></p>
+            <p className='sample-poems-label'><a href={`/poem/${randomId}`} className='sample-poem'>random poem</a></p>
             <script src="script.js"></script>
         </div>
     )
