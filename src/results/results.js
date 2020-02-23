@@ -189,7 +189,12 @@ const Results = (props) => {
             <h2 className='poem-title'>{poemTitle}</h2>
             <div className='poem-body'>
               {poemLines.map((line, i) => {
-                return <p key={`${i}`} className='poem-line'>{line}</p>
+                if (line.length <= 1) {
+                  return <p key={`${i}`} className='poem-line-empty'>{line}</p>
+                } else {
+                  return <p key={`${i}`} className='poem-line'>{line}</p>
+
+                }
               })}
             </div>
           </div>

@@ -227,8 +227,14 @@ fieldset {
 }
 
 .poem-line {
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
+
+.poem-line-empty {
   margin-bottom: 15px;
   margin-top: 15px;
+
 }
 
 .poem-results {
