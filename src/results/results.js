@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import { Link, useHistory } from 'react-router-dom'
-import useRouter from 'use-react-router'
 import Loading from '../loading/loading'
 import { saveAs } from 'file-saver'
 import html2canvas from 'html2canvas';
 import { TwitterShareButton } from 'react-twitter-embed'
-import ShareLink from 'react-facebook-share-link'
-import download from 'downloadjs'
+import { FacebookShareButton } from 'react-share'
 
 const Results = (props) => {
   const [ loading, setLoading ] = useState(false)
@@ -192,13 +190,8 @@ const Results = (props) => {
             </div>
           </div>
           <div className='share-buttons'>
-            <ShareLink>
-              {link => (
-                <a href={link} target='_blank'>Share this on Facebook</a>
-              )}
-            </ShareLink>
-            <div class="fb-share-button" data-href={`https://ytpoet.now.sh${props.match.url}`}  data-layout="button" data-size="small"></div>
-            <TwitterShareButton url={`https://ytpoet.now.sh${props.match.url}`} options={{ text: 'check out my poem on #ytpoet' }} />
+            <FacebookShareButton quote='check out my poem on ytPoet: ' />
+            <TwitterShareButton url={`https://ytpoet.now.sh${props.match.url}`} options={{ text: 'check out my poem on #ytpoet: ' }} />
             <button onClick={() => downloadPoem()}>download</button>
             <button onClick={() => copyLink === 'new' ? savePoem() : toClipBoard(props.match.url.split('/')[2])}>generate link</button>
           </div>
