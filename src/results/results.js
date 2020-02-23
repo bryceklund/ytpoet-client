@@ -126,7 +126,7 @@ const Results = (props) => {
   }
   
   function toClipBoard(id) { //all set! just need a tooltip to notify on copy success/failure
-    let url = `ytpoet.now.sh/poem/${id}`
+    let url = `https://ytpoet.now.sh/poem/${id}`
 
     try {
       let textArea = document.createElement("textarea")
