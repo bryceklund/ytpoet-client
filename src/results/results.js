@@ -23,6 +23,22 @@ const Results = (props) => {
                             "literally just", ]
                     }
 
+  function shareButtons() {
+    if (options) {
+      return (<div className={`share-buttons`}>
+        <button onClick={() => downloadPoem()}>download</button>
+        <button onClick={() => copyLink === 'new' ? savePoem() : toClipBoard(props.match.url.split('/')[2])}>generate link</button>
+      </div>)
+    } else {
+      return (<div className={`share-buttons`}>
+        <FacebookShareButton url={`https://ytpoet.now.sh${props.match.url}`} quote='check out my poem on #ytpoet: '><FacebookIcon size={20} round={false} /></FacebookShareButton>
+        <TwitterShareButton url={`https://ytpoet.now.sh${props.match.url}`} options={{ text: 'check out my poem on #ytpoet: ' }} />
+        <button onClick={() => downloadPoem()}>download</button>
+        <button onClick={() => copyLink === 'new' ? savePoem() : toClipBoard(props.match.url.split('/')[2])}>copy link</button>
+      </div>)
+    }
+  }
+
   function downloadPoem() {
     html2canvas(document.getElementById('results'))
       .then((canvas) => {
@@ -128,7 +144,6 @@ const Results = (props) => {
       copyToolTip('Failed to copy!') 
       return false
     }
-
   }
 
   function generatePoetry(options) {
@@ -178,12 +193,7 @@ const Results = (props) => {
               })}
             </div>
           </div>
-          <div className={`share-buttons ${options ? '' : 'hidden'}`}>
-            <FacebookShareButton url={`https://ytpoet.now.sh${props.match.url}`} quote='check out my poem on #ytpoet: '><FacebookIcon size={20} round={false} /></FacebookShareButton>
-            <TwitterShareButton url={`https://ytpoet.now.sh${props.match.url}`} options={{ text: 'check out my poem on #ytpoet: ' }} />
-            <button onClick={() => downloadPoem()}>download</button>
-            <button onClick={() => copyLink === 'new' ? savePoem() : toClipBoard(props.match.url.split('/')[2])}>generate link</button>
-          </div>
+          {shareButtons()}
           <p className='copy-status-container'><span id='copy-status' className='copy-status hidden'>{copyStatus}</span></p>
         </div>
     )
