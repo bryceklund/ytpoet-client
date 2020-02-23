@@ -46,6 +46,13 @@ table {
   box-sizing: border-box;
 }
 
+body {
+  background-image: url('./assets/TILE_FINAL.png');
+  background-size: 300px;
+  background-color: #ecfeff;
+  background-size: repeat;
+}
+
 .nav {
   margin-left: auto;
   margin-right: auto;
