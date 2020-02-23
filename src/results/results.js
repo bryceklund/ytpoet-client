@@ -188,8 +188,8 @@ const Results = (props) => {
             <h2 className='poem-title'>{poemTitle}</h2>
             <div className='poem-body'>
               {poemLines.map((line, i) => {
-                if (line.length <= 1) {
-                  return <p key={`${i}`} className='poem-line-empty'></p>
+                if (line === null) {
+                  return <p key={`${i}`} className='poem-line-empty' />
                 } else {
                   return <p key={`${i}`} className='poem-line'>{line}</p>
 
