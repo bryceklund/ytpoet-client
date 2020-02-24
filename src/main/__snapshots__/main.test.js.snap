@@ -1,0 +1,138 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Main matches its snapshot 1`] = `
+<div>
+  <div
+    className="input"
+  >
+    <form
+      className="url-settings"
+    >
+      <fieldset>
+        <legend>
+          paste a video URL:
+        </legend>
+        <input
+          className="url"
+          onInput={[Function]}
+          placeholder="https://www.youtube.com/watch?v=A_x1qvftnPs"
+        />
+        <a
+          className="go hidden"
+          href="/result"
+          onClick={[Function]}
+        >
+          GO
+        </a>
+        <p
+          className="error-message"
+        >
+          
+        </p>
+        <div
+          className="setting-container"
+        >
+          <label
+            htmlFor="poem-type"
+          >
+            poem type:
+          </label>
+          <select
+            className="poem-type"
+            name="poem-type"
+            onChange={[Function]}
+          >
+            <option
+              value="haiku"
+            >
+              haiku
+            </option>
+            <option
+              value="sonnet"
+            >
+              sonnet
+            </option>
+            <option
+              value="rondel"
+            >
+              rondel
+            </option>
+            <option
+              value="indriso"
+            >
+              indriso
+            </option>
+            <option
+              value="custom"
+            >
+              custom
+            </option>
+          </select>
+        </div>
+        <div
+          className="settings hidden"
+          id="settings"
+        >
+          <div
+            className="setting-container"
+          >
+            <label
+              htmlFor="syllables"
+            >
+              syllables per line:
+            </label>
+            <input
+              className="syllables"
+              name="syllables"
+              onChange={[Function]}
+              type="text"
+            />
+          </div>
+          <div
+            className="setting-container"
+          >
+            <label
+              htmlFor="lines"
+            >
+              number of lines (1-20):
+            </label>
+            <input
+              className="lines"
+              name="lines"
+              onChange={[Function]}
+              type="text"
+            />
+          </div>
+        </div>
+        <div
+          className="setting-container"
+        >
+          <label
+            htmlFor="profanity"
+          >
+            block profanity?
+          </label>
+          <input
+            name="profanity"
+            onChange={[Function]}
+            type="checkbox"
+          />
+        </div>
+      </fieldset>
+    </form>
+  </div>
+  <p
+    className="sample-poems-label"
+  >
+    <a
+      className="sample-poem"
+      href="/poem/null"
+    >
+      random poem
+    </a>
+  </p>
+  <script
+    src="script.js"
+  />
+</div>
+`;

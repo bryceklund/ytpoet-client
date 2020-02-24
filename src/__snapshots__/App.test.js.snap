@@ -1,0 +1,62 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App matches its snapshot 1`] = `
+Array [
+  <nav
+    className="nav"
+  >
+    <h1>
+      <a
+        className="hero-link"
+        href="/home"
+        onClick={[Function]}
+      >
+        ytPoet
+      </a>
+    </h1>
+  </nav>,
+  <div>
+    <p
+      className="instructions"
+    >
+      Hello and welcome to ytPoet!
+      <br />
+      - To get started, paste a YouTube video in the text box
+      <br />
+      - Next, choose your poem type from the drop-down menu
+      <br />
+      - Finally, hit "GO" to generate a poem
+      <br />
+      - Click "generate link" to save your poem and make it sharable
+      <br />
+      - Once generated, use a social share link to post it to Facebook or Twitter
+      <br />
+      - At any given moment, click the "random poem" button to be taken to a random saved poem
+      <br />
+      <br />
+    </p>
+    <div
+      className="continue-container"
+    >
+      <a
+        href="/home"
+        onClick={[Function]}
+      >
+        <button
+          className="continue"
+        >
+          continue
+        </button>
+      </a>
+    </div>
+  </div>,
+  <footer>
+    © 2020 bryce eklund | 
+    <a
+      href="https://github.com/bryceklund"
+    >
+      github
+    </a>
+  </footer>,
+]
+`;

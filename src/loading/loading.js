@@ -34,7 +34,7 @@ const Loading = (props) => {
         return <p className='error'>Something went wrong. Give it another try.</p>
     } else {
         return (
-            <div class='loading' id='loading'>
+            <div className='loading' id='loading'>
             </div>
         )
     }

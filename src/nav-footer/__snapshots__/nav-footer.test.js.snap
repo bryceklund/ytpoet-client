@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Nav+Footer matches its snapshot 1`] = `
+Array [
+  <nav
+    className="nav"
+  >
+    <h1>
+      <a
+        className="hero-link"
+        href="/home"
+        onClick={[Function]}
+      >
+        ytPoet
+      </a>
+    </h1>
+  </nav>,
+  <footer>
+    © 2020 bryce eklund | 
+    <a
+      href="https://github.com/bryceklund"
+    >
+      github
+    </a>
+  </footer>,
+]
+`;
