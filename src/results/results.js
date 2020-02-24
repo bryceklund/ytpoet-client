@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Link, useHistory } from 'react-router-dom'
-import { API_BASE_URL, API_TOKEN } from '../../config.js'
+import { API_BASE_URL, API_TOKEN } from '../config.js'
 import Loading from '../loading/loading'
 import { saveAs } from 'file-saver'
 import html2canvas from 'html2canvas';
