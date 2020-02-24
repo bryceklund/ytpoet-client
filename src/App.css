@@ -15,7 +15,7 @@ time, mark, audio, video {
 	padding: 0;
 	border: 0;
 	font-size: 100%;
-	font: inherit;
+	font-family: 'Crimson Text';
 	vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
@@ -56,8 +56,8 @@ body {
 .nav {
   margin-left: auto;
   margin-right: auto;
-  background: gray;
-  height: 40px;
+
+  margin-top: 25px;
 }
 
 .hero-link {
@@ -67,7 +67,7 @@ body {
 }
 
 h1 {
-  font-size: 24pt;
+  font-size: 40px;
   text-align: center;
   margin: 0;
 }
@@ -81,6 +81,12 @@ h2 {
   font-size: 36px;
   text-align: center;
   margin-top: 75px;
+}
+
+.error-message {
+  color: #ff576b;
+  margin-top: 3px;
+  margin-bottom: 3px;
 }
 
 .error {
@@ -137,16 +143,19 @@ h2 {
 }
 
 .go {
-  border: 1px solid grey;
+  border: 1px solid black;
   border-radius: 2px;
   height: 40px;
-  background-color: gainsboro;
   margin-left: 5px;
   text-decoration: none;
   color: black;
   cursor: default;
   font-size: 20px;
   padding: 5px;
+}
+
+.setting-label {
+  background-color: white;
 }
 
 .toggle-settings {
@@ -179,7 +188,7 @@ fieldset {
 
 .sample-poems-label {
   position: fixed;
-  bottom: 100px;
+  bottom: 50px;
   left: 5px;
   font-style: italic;
 }
@@ -289,6 +298,11 @@ footer {
 
   .poem-line {
     margin-bottom: 18px;
+  }
+
+  .error-message {
+    text-align: right;
+    float: right;
   }
 }
 
