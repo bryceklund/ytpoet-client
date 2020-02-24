@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Link, useHistory } from 'react-router-dom'
+import { API_BASE_URL, API_TOKEN } from '../config'
 import Loading from '../loading/loading'
 import { saveAs } from 'file-saver'
 import html2canvas from 'html2canvas';
@@ -66,12 +67,12 @@ const Results = (props) => {
       title: poemTitle,
       body: poemLines
     }
-    const apiUrl = `https://infinite-sierra-05503.herokuapp.com/api/poem`
+    const apiUrl = `${API_BASE_URL}/poem`
     const apiOptions = {
       'method': 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer swag420' 
+        'Authorization': `Bearer ${API_TOKEN}`
       },
       body: JSON.stringify(bodyData)
     }
@@ -106,13 +107,12 @@ const Results = (props) => {
 
   function getPoem(id) {
       //make call to db to get poem
-      const tempId = '643d1896-e465-4753-8a14-c5fc80427653'
-      const apiUrl = `https://infinite-sierra-05503.herokuapp.com/api/poem/${id}`
+      const apiUrl = `${API_BASE_URL}/poem/${id}`
       const apiOptions = {
                             'method': 'GET',
                             headers: {
                               'Content-Type': 'application/json',
-                              'Authorization': 'Bearer swag420' 
+                              'Authorization': `Bearer ${API_TOKEN}`
                             }
                           }
       try {
@@ -127,7 +127,6 @@ const Results = (props) => {
   
   function toClipBoard(id) { //all set! just need a tooltip to notify on copy success/failure
     let url = `https://ytpoet.now.sh/poem/${id}`
-
     try {
       let textArea = document.createElement("textarea")
       textArea.value = url
@@ -146,12 +145,12 @@ const Results = (props) => {
   }
 
   function generatePoetry(options) {
-    const apiUrl = `https://infinite-sierra-05503.herokuapp.com/api/generate`
+    const apiUrl = `${API_BASE_URL}/generate`
     const apiOptions = { 
                           'method': 'POST',
                           headers: {
                             'Content-Type': 'application/json',
-                            'Authorization': 'Bearer swag420' 
+                            'Authorization': `Bearer ${API_BASE_URL}`
                           },
                           body: JSON.stringify(options)
                         }
@@ -192,7 +191,6 @@ const Results = (props) => {
                   return <p key={`${i}`} className='poem-line-empty' />
                 } else {
                   return <p key={`${i}`} className='poem-line'>{line}</p>
-
                 }
               })}
             </div>
