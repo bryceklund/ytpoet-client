@@ -29,7 +29,6 @@ const Loading = (props) => {
         if (props.loading !== 'error') {
             showLetters()
         }
-        
     })
     if (props.loading === 'error') {
         return <p className='error'>Something went wrong. <Link to='/result'>Give it another try.</Link></p>
