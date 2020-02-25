@@ -300,6 +300,7 @@ footer {
   position: fixed;
   bottom: 15px;
   left: 15px;
+  margin-top: 30px;
 }
 
 @media screen and (max-width: 540px) {
