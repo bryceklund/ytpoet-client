@@ -205,7 +205,7 @@ const Results = (props) => {
       }
     }
     document.body.style.backgroundImage = `url(null)`
-    if (colorScheme) {
+    if (colorScheme && titleColor) {
       document.body.style.backgroundColor = ``
       document.body.classList.add(colorScheme) 
       document.getElementById('title').style.color = titleColor
