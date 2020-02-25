@@ -208,7 +208,7 @@ const Results = (props) => {
     document.body.style.backgroundImage = `url(null)`
     if (colorScheme) {
       document.body.classList.add(colorScheme) 
-      document.getElementById('title').style.color = titleColor
+      console.log(document.getElementById('title').style.color)
       document.body.style.backgroundColor = ``
     }
     return () => {
