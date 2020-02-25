@@ -63,7 +63,7 @@ const Main = () => {
                         <input className='url' placeholder='https://www.youtube.com/watch?v=A_x1qvftnPs' onInput={(e) => validate(e.target.value, 'url')} />
                         <Link className={`go ${goAllowed ? '' : 'hidden'}`} to={{ pathname: '/result', state: options }}>GO</Link>
                         <div className='setting-container'>
-                        <p className='error-message setting-label'>{errorMessage}</p>
+                        <p className='error-message'>{errorMessage}</p>
                         <label className='setting-label' htmlFor='poem-type'>poem type:</label>
                         <select className='poem-type' name='poem-type' onChange={(e) => setPoemType(e.target.value)}>
                         <option value='haiku'>haiku</option>

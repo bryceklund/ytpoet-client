@@ -13,6 +13,7 @@ const Results = (props) => {
   const [ poemTitle, setPoemTitle ] = useState('')
   const [ copyLink, setCopyLink ] = useState(null)
   const [ copyStatus, setCopyStatus ] = useState('')
+  const [ colorScheme, setColorScheme ] = useState('')
 
   const history = useHistory()
   const options = props.location.state
@@ -23,6 +24,31 @@ const Results = (props) => {
                             "THE ULTIMATE ALPHABET", 
                             "literally just", ]
                     }
+
+  function hashString(str) {
+    let result = 0
+    for (let i = 0; i < str.length; i++) {
+      result += str.charCodeAt(i)
+    }
+    return (result % 3) + 1
+  }
+
+  function getScheme(title) {
+    const hash = hashString(title)
+    switch(hash) {
+      case(1):
+        setColorScheme('bg-blue')
+      break
+      case(2):
+        setColorScheme('bg-pink')
+      break
+      case(3):
+        setColorScheme('bg-green')
+      break
+      default:
+        return
+    }
+  }
 
   function shareButtons() {
     if (options) {
@@ -95,6 +121,7 @@ const Results = (props) => {
   }
 
   function displayPoem(data) {
+    getScheme(data.title.trim())
     setPoemLines(data.body)
     setPoemTitle(data.title.trim())
     setLoading(false)
@@ -176,14 +203,14 @@ const Results = (props) => {
     return <Loading loading={loading} />
   } else if (poemLines && poemLines.length && poemTitle) {
     return (
-        <div className='poem-results'>
+        <div className={`poem-results ${colorScheme}`}>
           <div className='back-regen-buttons'>
             <Link to='/home'>back</Link><button disabled={options ? false : true} onClick={(e) => {
                                                                             e.preventDefault()
                                                                             generatePoetry(options)
                                                                           }}>regenerate</button>
           </div>
-          <div className='results' id='results'>
+          <div className={`results ${colorScheme}-card`} id='results'>
             <h2 className='poem-title'>{poemTitle}</h2>
             <div className='poem-body'>
               {poemLines.map((line, i) => {
