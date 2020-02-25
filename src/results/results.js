@@ -191,13 +191,15 @@ const Results = (props) => {
   }
 
   useEffect(() => {
-    if (options) {
-      setCopyLink('new')
-      generatePoetry(options)
-    } else {
-      setCopyLink('copy')
-      const { poemId } = props.match.params
-      getPoem(poemId)
+    if (!(poemTitle && poemLines)) {
+      if (options) {
+        setCopyLink('new')
+        generatePoetry(options)
+      } else {
+        setCopyLink('copy')
+        const { poemId } = props.match.params
+        getPoem(poemId)
+      }
     }
     document.body.style.backgroundImage = `url(null)`
     if (colorScheme) {
