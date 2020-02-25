@@ -156,7 +156,7 @@ const Results = (props) => {
           throw new Error('Failed to copy')
         }
       })
-      .catch(err => console.error(err))
+      .catch(err => displayError(err))
   }
 
   function displayPoem(data) {
@@ -167,7 +167,7 @@ const Results = (props) => {
   }
 
   function displayError(err) {
-    console.log(err)
+    //console.log(err)
     setLoading('error')
   }
 
