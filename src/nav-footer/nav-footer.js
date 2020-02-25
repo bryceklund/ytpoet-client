@@ -35,10 +35,13 @@ const Footer = () => {
         getRandom()
     })
     return (
-        <footer>
-            <p className='sample-poems-label'><a href={`/poem/${randomId}`} className='sample-poem'>random poem</a></p>
-            &copy; 2020 bryce eklund | <a href='https://github.com/bryceklund'>github</a>
-         </footer>
+        <div className='foot-wrapper'>
+            <footer>
+                <p className='sample-poems-label'><a href={`/poem/${randomId}`} className='sample-poem'>random poem</a></p>
+                <p>&copy; 2020 bryce eklund | <a href='https://github.com/bryceklund'>github</a></p>
+            </footer>  
+        </div>
+
     )
 }
 
