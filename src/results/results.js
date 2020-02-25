@@ -193,23 +193,38 @@ const Results = (props) => {
         .catch(err => displayError(err))
   }
 
-  useEffect(() => {
-    if (!poemTitle) {
-      if (options) {
-        setCopyLink('new')
-        generatePoetry(options)
+  async function loadPage() {
+    let promise = new Promise((resolve, reject) => {
+      if (!(poemTitle && poemLines)) {
+        if (options) {
+          setCopyLink('new')
+          generatePoetry(options)
+          resolve(true)
+        } else {
+          setCopyLink('copy')
+          const { poemId } = props.match.params
+          getPoem(poemId)
+          resolve(true)
+        }
       } else {
-        setCopyLink('copy')
-        const { poemId } = props.match.params
-        getPoem(poemId)
+        reject(false)
       }
-    }
-    document.body.style.backgroundImage = `url(null)`
-    if (colorScheme && titleColor) {
-      document.body.style.backgroundColor = ``
-      document.body.classList.add(colorScheme) 
-      document.getElementById('title').style.color = titleColor
-    }
+    })
+    let result = await promise
+    return result
+  }
+
+  useEffect(() => {
+    loadPage()
+      .then(() => {
+        if (colorScheme && titleColor) {
+          document.body.style.backgroundImage = `url(null)`
+          document.body.style.backgroundColor = ``
+          document.body.classList.add(colorScheme) 
+          document.getElementById('title').style.color = titleColor
+        }
+      })
+ 
     return () => {
       document.body.style.backgroundImage = `url('/static/media/TILE_FINAL.ff6afcf4.png')`
       document.body.style.backgroundColor = `#ecfeff`
