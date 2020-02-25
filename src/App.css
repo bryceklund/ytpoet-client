@@ -194,7 +194,6 @@ fieldset {
 .sample-poems-label {
   position: fixed;
   bottom: 50px;
-  left: 5px;
   font-style: italic;
 }
 
@@ -323,9 +322,6 @@ footer {
 @media screen and (min-width: 700px) {
   .url {
     width: 475px;
-  }
-  .sample-poems-label {
-    left: 20px;
   }
   .input {
     margin-top: 150px;

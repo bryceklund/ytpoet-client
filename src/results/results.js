@@ -21,7 +21,7 @@ const Results = (props) => {
   const options = props.location.state
   //const data = apiResult.items.map(c => c.snippet.topLevelComment.snippet.textDisplay)
   const demoData = {
-                    title: 'griffin',
+                    title: 'abcdefghij 123 123',
                     body: [ "I like this robot", 
                             "THE ULTIMATE ALPHABET", 
                             "literally just", ]
@@ -40,15 +40,15 @@ const Results = (props) => {
     switch(hash) {
       case(1):
         setColorScheme('bg-blue')
-        setTitleColor('#FFB541')
+        setTitleColor('#ff9a00')
       break
       case(2):
         setColorScheme('bg-pink')
-        setTitleColor('#9BFF94')
+        setTitleColor('#0eb900')
       break
       case(3):
         setColorScheme('bg-green')
-        setTitleColor('#F8BAFF')
+        setTitleColor('#f599ff')
       break
       default:
         return
@@ -194,7 +194,7 @@ const Results = (props) => {
   }
 
   useEffect(() => {
-    if (!(poemLines && poemTitle)) {
+    if (!poemTitle) {
       if (options) {
         setCopyLink('new')
         generatePoetry(options)
@@ -206,9 +206,9 @@ const Results = (props) => {
     }
     document.body.style.backgroundImage = `url(null)`
     if (colorScheme) {
+      document.body.style.backgroundColor = ``
       document.body.classList.add(colorScheme) 
       document.getElementById('title').style.color = titleColor
-      document.body.style.backgroundColor = ``
     }
     return () => {
       document.body.style.backgroundImage = `url('/static/media/TILE_FINAL.ff6afcf4.png')`
