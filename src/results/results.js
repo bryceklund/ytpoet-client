@@ -125,12 +125,11 @@ const Results = (props) => {
     getScheme(data.title.trim())
     setPoemLines(data.body)
     setPoemTitle(data.title.trim())
-    document.body.style.backgroundImage = null
-    document.body.style.backgroundColor = colorScheme
     setLoading(false)
   }
 
   function displayError(err) {
+    displayPoem(demoData)
     console.log(err)
     setLoading('error')
   }
@@ -192,6 +191,7 @@ const Results = (props) => {
   }
 
   useEffect(() => {
+    /*
     if (options) {
       setCopyLink('new')
       generatePoetry(options)
@@ -199,8 +199,21 @@ const Results = (props) => {
       setCopyLink('copy')
       const { poemId } = props.match.params
       getPoem(poemId)
+    }*/
+    displayPoem(demoData)
+    document.body.style.backgroundImage = `url(null)`
+    if (colorScheme) {
+      document.body.classList.add(colorScheme) 
+      document.body.style.backgroundColor = ``
     }
-  }, [])
+    return () => {
+      document.body.style.backgroundImage = `url('/static/media/TILE_FINAL.ff6afcf4.png')`
+      document.body.style.backgroundColor = `#ecfeff`
+      if (colorScheme) {
+        document.body.classList.remove(colorScheme)
+      }
+    }
+  }, [colorScheme])
 
   if (loading) {
     return <Loading loading={loading} />
