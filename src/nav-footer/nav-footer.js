@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 const Nav = (props) => {
         console.log(props.location)
     return (
-        <nav className='nav'><h1><Link className='hero-link' to='/home'>ytPoet</Link></h1></nav>
+        <nav className='nav'><h1><Link id='title' className='hero-link' to='/home'>ytPoet</Link></h1></nav>
     )
 }
 

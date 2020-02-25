@@ -15,6 +15,7 @@ const Results = (props) => {
   const [ copyLink, setCopyLink ] = useState(null)
   const [ copyStatus, setCopyStatus ] = useState('')
   const [ colorScheme, setColorScheme ] = useState('')
+  const [ titleColor, setTitleColor ] = useState('')
 
   const history = useHistory()
   const options = props.location.state
@@ -39,12 +40,15 @@ const Results = (props) => {
     switch(hash) {
       case(1):
         setColorScheme('bg-blue')
+        setTitleColor('#FFB541')
       break
       case(2):
         setColorScheme('bg-pink')
+        setTitleColor('#9BFF94')
       break
       case(3):
         setColorScheme('bg-green')
+        setTitleColor('#F8BAFF')
       break
       default:
         return
@@ -204,11 +208,13 @@ const Results = (props) => {
     document.body.style.backgroundImage = `url(null)`
     if (colorScheme) {
       document.body.classList.add(colorScheme) 
+      document.getElementById('title').style.color = titleColor
       document.body.style.backgroundColor = ``
     }
     return () => {
       document.body.style.backgroundImage = `url('/static/media/TILE_FINAL.ff6afcf4.png')`
       document.body.style.backgroundColor = `#ecfeff`
+      document.getElementById('title').style.color = '#df7cb5'
       if (colorScheme) {
         document.body.classList.remove(colorScheme)
       }
