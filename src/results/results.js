@@ -49,8 +49,6 @@ const Results = (props) => {
       default:
         return
     }
-    document.body.style.backgroundImage = null
-    document.body.style.backgroundColor = colorScheme
   }
 
   function shareButtons() {
@@ -127,6 +125,8 @@ const Results = (props) => {
     getScheme(data.title.trim())
     setPoemLines(data.body)
     setPoemTitle(data.title.trim())
+    document.body.style.backgroundImage = null
+    document.body.style.backgroundColor = colorScheme
     setLoading(false)
   }
 
