@@ -64,13 +64,13 @@ body {
   color: #df7cb5;
   font-style: none;
   text-decoration: none;
-  height: 60px;
 }
 
 h1 {
   font-size: 40px;
   text-align: center;
   margin: 0;
+  height: 60px;
 }
 
 h2 {
