@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import { API_BASE_URL, API_TOKEN } from '../config.js'
 
 const Nav = (props) => {
         console.log(props.location)
@@ -12,22 +13,19 @@ const Footer = () => {
     const [ randomId, setRandomId ] = useState(null)
 
     function getRandom() {
-        const url = `https://infinite-sierra-05503.herokuapp.com/api/random`
+        const url = `${API_BASE_URL}/random`
         const options = {
           'method': 'GET',
           headers: {
             'Content-Type': 'application/json',
-            'Authorization': 'Bearer swag420' 
+            'Authorization': `Bearer ${API_TOKEN}`
           }
         }
         
         if (!randomId) {
             fetch(url, options)
             .then(res => res.json())
-            .then(data => {
-                setRandomId(data.id)
-            })
-            //.then(id => setRandomId(id))
+            .then(data => setRandomId(data.id))
             .catch(err => console.error(err))
         } else {
             return
