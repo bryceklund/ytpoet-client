@@ -302,6 +302,12 @@ footer {
   left: 15px;
 }
 
+@media screen and (max-width: 540px) {
+  body {
+    height: 100vh;
+  }
+}
+
 @media screen and (min-width: 540px) {
   .results {
     width: 500px;
