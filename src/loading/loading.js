@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react';
+import React, { useEffect } from 'react'
+import { Link } from 'react-router-dom'
 
 const Loading = (props) => {
     function showLetters() {
@@ -31,7 +32,7 @@ const Loading = (props) => {
         
     })
     if (props.loading === 'error') {
-        return <p className='error'>Something went wrong. Give it another try.</p>
+        return <p className='error'>Something went wrong. <Link to='/result'>Give it another try.</Link></p>
     } else {
         return (
             <div className='loading' id='loading'>

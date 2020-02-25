@@ -64,6 +64,8 @@ body {
   color: #df7cb5;
   font-style: none;
   text-decoration: none;
+  height: 100%;
+  display: inline-block;
 }
 
 h1 {
