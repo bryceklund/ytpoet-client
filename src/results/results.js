@@ -43,8 +43,10 @@ const Results = (props) => {
   useEffect(() => {
     document.body.style.backgroundImage = `url(null)`
     document.body.style.backgroundColor = ``
-    document.body.classList.add(colorScheme) 
     document.getElementById('title').style.color = titleColor
+    if (colorScheme) {
+      document.body.classList.add(colorScheme) 
+    }
   
     return () => {
       document.body.style.backgroundImage = `url('/static/media/TILE_FINAL.ff6afcf4.png')`
