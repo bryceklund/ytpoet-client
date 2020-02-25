@@ -133,7 +133,6 @@ const Results = (props) => {
   }
 
   function displayError(err) {
-    displayPoem(demoData)
     console.log(err)
     setLoading('error')
   }
@@ -195,7 +194,7 @@ const Results = (props) => {
   }
 
   useEffect(() => {
-    if (!poemLines) {
+    if (!(poemLines && poemTitle)) {
       if (options) {
         setCopyLink('new')
         generatePoetry(options)
