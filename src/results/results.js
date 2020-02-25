@@ -56,7 +56,7 @@ const Results = (props) => {
         document.body.classList.remove(colorScheme)
       }
     }
-  }, [colorScheme])
+  }, [colorScheme, titleColor])
                   
 
   function hashString(str) {
