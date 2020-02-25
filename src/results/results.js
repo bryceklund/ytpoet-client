@@ -99,7 +99,7 @@ const Results = (props) => {
     } else {
       return (<div className={`share-buttons`}>
         <FacebookShareButton url={`https://ytpoet.now.sh${props.match.url}`} quote='check out my poem on #ytpoet: '><FacebookIcon size={20} round={false} /></FacebookShareButton>
-        <TwitterShareButton url={`https://ytpoet.now.sh${props.match.url}`} options={{ text: 'check out my poem on #ytpoet: ' }} />
+        try {<TwitterShareButton url={`https://ytpoet.now.sh${props.match.url}`} options={{ text: 'check out my poem on #ytpoet: ' }} />} catch {}
         <button onClick={() => downloadPoem()}>download</button>
         <button onClick={() => copyLink === 'new' ? savePoem() : toClipBoard(props.match.url.split('/')[2])}>copy link</button>
       </div>)

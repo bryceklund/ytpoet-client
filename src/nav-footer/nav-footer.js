@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom'
 import { API_BASE_URL, API_TOKEN } from '../config.js'
 
 const Nav = (props) => {
-        console.log(props.location)
     return (
         <nav className='nav'><h1><Link id='title' className='hero-link' to='/home'>ytPoet</Link></h1></nav>
     )
