@@ -27,6 +27,36 @@ const Results = (props) => {
                             "literally just", ]
                     }
 
+  useEffect(() => {
+    if (!poemTitle) {
+      if (options) {
+        setCopyLink('new')
+        generatePoetry(options)
+      } else {
+        setCopyLink('copy')
+        const { poemId } = props.match.params
+        getPoem(poemId)
+      }
+    }
+  }, [])                  
+
+  useEffect(() => {
+    document.body.style.backgroundImage = `url(null)`
+    document.body.style.backgroundColor = ``
+    document.body.classList.add(colorScheme) 
+    document.getElementById('title').style.color = titleColor
+  
+    return () => {
+      document.body.style.backgroundImage = `url('/static/media/TILE_FINAL.ff6afcf4.png')`
+      document.body.style.backgroundColor = `#ecfeff`
+      document.getElementById('title').style.color = '#df7cb5'
+      if (colorScheme) {
+        document.body.classList.remove(colorScheme)
+      }
+    }
+  }, [colorScheme])
+                  
+
   function hashString(str) {
     let result = 0
     for (let i = 0; i < str.length; i++) {
@@ -192,49 +222,7 @@ const Results = (props) => {
         .then(data => displayPoem(data))
         .catch(err => displayError(err))
   }
-
-  async function loadPage() {
-    let promise = new Promise((resolve, reject) => {
-      if (!(poemTitle && poemLines)) {
-        if (options) {
-          setCopyLink('new')
-          generatePoetry(options)
-          resolve(true)
-        } else {
-          setCopyLink('copy')
-          const { poemId } = props.match.params
-          getPoem(poemId)
-          resolve(true)
-        }
-      } else {
-        reject(false)
-      }
-    })
-    let result = await promise
-    return result
-  }
-
-  useEffect(() => {
-    loadPage()
-      .then(() => {
-        if (colorScheme && titleColor) {
-          document.body.style.backgroundImage = `url(null)`
-          document.body.style.backgroundColor = ``
-          document.body.classList.add(colorScheme) 
-          document.getElementById('title').style.color = titleColor
-        }
-      })
- 
-    return () => {
-      document.body.style.backgroundImage = `url('/static/media/TILE_FINAL.ff6afcf4.png')`
-      document.body.style.backgroundColor = `#ecfeff`
-      document.getElementById('title').style.color = '#df7cb5'
-      if (colorScheme) {
-        document.body.classList.remove(colorScheme)
-      }
-    }
-  }, [colorScheme])
-
+  
   if (loading) {
     return <Loading loading={loading} />
   } else if (poemLines && poemLines.length && poemTitle) {
