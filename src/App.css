@@ -340,3 +340,17 @@ footer {
     z-index: -1;
   }
 }
+
+.animated {
+  text-shadow: black 5px 5px;
+  animation-name: title;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes title {
+  0% {text-shadow: black 5px 5px;}
+  25% {text-shadow: black -5px 5px;}
+  50% {text-shadow: black -5px -5px;}
+  75% {text-shadow: black 5px -5px;}
+}

@@ -47,7 +47,7 @@ const Results = (props) => {
       document.body.classList.add(colorScheme) 
       document.getElementById('title').style.color = titleColor
       document.getElementById('title').style.textShadow = '3px 3px black'
-
+      document.getElementById.classList.add('animated')
     }
   
     return () => {
@@ -57,6 +57,7 @@ const Results = (props) => {
       document.getElementById('title').style.textShadow = ''
       if (colorScheme) {
         document.body.classList.remove(colorScheme)
+        document.getElementById.classList.remove('animated')
       }
     }
   })
