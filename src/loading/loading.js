@@ -31,7 +31,7 @@ const Loading = (props) => {
         }
     })
     if (props.loading === 'error') {
-        return <p className='error'>Something went wrong. <Link to='/result'>Give it another try.</Link></p>
+        return <p className='error'>Something went wrong. <a href='' onClick='window.location.reload(true)'>Try again?</a></p>
     } else {
         return (
             <div className='loading' id='loading'>
