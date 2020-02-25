@@ -195,7 +195,7 @@ const Results = (props) => {
   }
 
   useEffect(() => {
-    if (!(poemTitle || poemLines)) {
+    if (!(poemTitle && poemLines)) {
       if (options) {
         setCopyLink('new')
         generatePoetry(options)
