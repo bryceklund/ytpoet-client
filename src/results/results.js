@@ -46,7 +46,7 @@ const Results = (props) => {
     if (colorScheme) {
       document.body.classList.add(colorScheme) 
       document.getElementById('title').style.color = titleColor
-      document.getElementById('title').style.textShadow = '3px 3px black'
+      document.getElementById('title').style.textShadow = '5px 5px black'
       document.getElementById('title').classList.add('animated')
     }
   
