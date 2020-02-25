@@ -12,7 +12,26 @@ const Main = () => {
 
     const options = { poemType, syllables, lines, profanity, url }
 
-
+    useEffect(() => {
+        document.body.style.backgroundImage = `url('/static/media/TILE_FINAL.ff6afcf4.png')`
+        document.body.style.backgroundColor = `#ecfeff`
+        document.getElementById('title').style.color = '#df7cb5'
+        if (url) {
+            if (poemType === 'custom' && (lines < 1 || lines > 20 || isNaN(lines))) {
+                setGoAllowed(false)
+                setErrorMessage('line count must be between 1 and 20')
+            } else if (poemType === 'custom' && (syllables < 1 || syllables > 30 || isNaN(syllables))) {
+                setGoAllowed(false)
+                setErrorMessage('syllable count must be between 1 and 30')
+            } else if (url && !checkUrl(url)) {
+                setGoAllowed(false)
+                setErrorMessage('please enter a valid youtube url!')
+            } else {
+                setGoAllowed(true)
+                setErrorMessage('')
+            }
+        }   
+    })
 
     function checkUrl(url) {
         const regex = RegExp(/^((?:https?:)?\/\/)?((?:www|m)\.)?((?:youtube\.com|youtu.be))(\/(?:[\w\-]+\?v=|embed\/|v\/)?)([\w\-]+)(\S+)?$/)
@@ -36,24 +55,6 @@ const Main = () => {
         }
     }
 
-
-    useEffect(() => {
-        if (url) {
-            if (poemType === 'custom' && (lines < 1 || lines > 20 || isNaN(lines))) {
-                setGoAllowed(false)
-                setErrorMessage('line count must be between 1 and 20')
-            } else if (poemType === 'custom' && (syllables < 1 || syllables > 30 || isNaN(syllables))) {
-                setGoAllowed(false)
-                setErrorMessage('syllable count must be between 1 and 30')
-            } else if (url && !checkUrl(url)) {
-                setGoAllowed(false)
-                setErrorMessage('please enter a valid youtube url!')
-            } else {
-                setGoAllowed(true)
-                setErrorMessage('')
-            }
-        }   
-    })
     return (
         <div>
             <div className='input'>
