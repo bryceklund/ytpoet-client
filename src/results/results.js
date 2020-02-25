@@ -45,8 +45,6 @@ const Results = (props) => {
     document.body.style.backgroundColor = ``
     if (colorScheme) {
       document.body.classList.add(colorScheme) 
-    }
-    if (titleColor) {
       document.getElementById('title').style.color = titleColor
     }
   
