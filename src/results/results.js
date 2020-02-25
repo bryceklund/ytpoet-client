@@ -195,7 +195,7 @@ const Results = (props) => {
   }
 
   useEffect(() => {
-    if (!(poemTitle && poemLines)) {
+    if (loading) {
       if (options) {
         setCopyLink('new')
         generatePoetry(options)
@@ -219,7 +219,7 @@ const Results = (props) => {
         document.body.classList.remove(colorScheme)
       }
     }
-  }, [colorScheme])
+  }, [])
 
   if (loading) {
     return <Loading loading={loading} />
