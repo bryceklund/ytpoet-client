@@ -15,6 +15,7 @@ const Main = () => {
     useEffect(() => {
         document.body.style.backgroundImage = `url('/static/media/TILE_FINAL.ff6afcf4.png')`
         document.body.style.backgroundColor = `#ecfeff`
+        document.getElementById('title').style.textShadow = ''
         document.getElementById('title').style.color = '#df7cb5'
         if (url) {
             if (poemType === 'custom' && (lines < 1 || lines > 20 || isNaN(lines))) {

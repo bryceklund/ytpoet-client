@@ -46,12 +46,15 @@ const Results = (props) => {
     if (colorScheme) {
       document.body.classList.add(colorScheme) 
       document.getElementById('title').style.color = titleColor
+      document.getElementById('title').style.textShadow = '3px 3px black'
+
     }
   
     return () => {
       document.body.style.backgroundImage = `url('/static/media/TILE_FINAL.ff6afcf4.png')`
       document.body.style.backgroundColor = `#ecfeff`
       document.getElementById('title').style.color = '#df7cb5'
+      document.getElementById('title').style.textShadow = ''
       if (colorScheme) {
         document.body.classList.remove(colorScheme)
       }

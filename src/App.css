@@ -305,8 +305,7 @@ footer {
 
 @media screen and (max-width: 540px) {
   body {
-    position: absolute;
-    width: 100%;
+    overflow: auto;
   }
 }
 
