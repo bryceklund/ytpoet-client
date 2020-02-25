@@ -146,7 +146,6 @@ const Results = (props) => {
         return data.poemId
       })
       .then(id => {
-        // send to clipboard, fb connector, ig connector, or twitter connector depending on selection
         if (id) {
           toClipBoard(id)
         } else {

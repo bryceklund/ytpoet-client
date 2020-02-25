@@ -305,6 +305,7 @@ footer {
 @media screen and (max-width: 540px) {
   body {
     height: 100vh;
+    margin-top: 0px;
   }
 }
 
