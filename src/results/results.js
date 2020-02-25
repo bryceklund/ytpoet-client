@@ -43,9 +43,11 @@ const Results = (props) => {
   useEffect(() => {
     document.body.style.backgroundImage = `url(null)`
     document.body.style.backgroundColor = ``
-    document.getElementById('title').style.color = titleColor
     if (colorScheme) {
       document.body.classList.add(colorScheme) 
+    }
+    if (titleColor) {
+      document.getElementById('title').style.color = titleColor
     }
   
     return () => {
