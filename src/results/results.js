@@ -191,7 +191,6 @@ const Results = (props) => {
   }
 
   useEffect(() => {
-    /*
     if (options) {
       setCopyLink('new')
       generatePoetry(options)
@@ -199,8 +198,7 @@ const Results = (props) => {
       setCopyLink('copy')
       const { poemId } = props.match.params
       getPoem(poemId)
-    }*/
-    displayPoem(demoData)
+    }
     document.body.style.backgroundImage = `url(null)`
     if (colorScheme) {
       document.body.classList.add(colorScheme) 
