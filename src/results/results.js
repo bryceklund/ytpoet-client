@@ -7,6 +7,7 @@ import html2canvas from 'html2canvas';
 import { TwitterShareButton } from 'react-twitter-embed'
 import { FacebookShareButton, FacebookIcon } from 'react-share'
 
+
 const Results = (props) => {
   const [ loading, setLoading ] = useState(false)
   const [ poemLines, setPoemLines ] = useState([])
@@ -48,6 +49,8 @@ const Results = (props) => {
       default:
         return
     }
+    document.body.style.backgroundImage = null
+    document.body.style.backgroundColor = colorScheme
   }
 
   function shareButtons() {
