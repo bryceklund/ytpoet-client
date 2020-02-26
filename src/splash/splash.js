@@ -12,7 +12,7 @@ const Splash = (e) => {
                 Hello and welcome to ytPoet!<br />
                 <a href='#' onClick={() => toggleInstructions(e)}>click here</a> to display some instructions, otherwise proceed by clicking "continue" below
                 <br />
-                <iframe id='intro-iframe' className='intro-md hidden' src='https://wrathfulglamorousthing--five-nine.repl.co/'></iframe>
+                <iframe id='intro-iframe' className='intro-md hidden' src='https://ytpoet-instructions--bryceklund.repl.co/'></iframe>
             <br />
             </p>
             <div className='continue-container'>
