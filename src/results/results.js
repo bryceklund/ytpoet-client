@@ -93,15 +93,15 @@ const Results = (props) => {
   function shareButtons() {
     if (options) {
       return (<div className={`share-buttons`}>
-        <button onClick={() => downloadPoem()}>download</button>
-        <button onClick={() => copyLink === 'new' ? savePoem() : toClipBoard(props.match.url.split('/')[2])}>generate link</button>
+        <button className='dl-copy-regen' onClick={() => downloadPoem()}>download</button>
+        <button className='dl-copy-regen' onClick={() => copyLink === 'new' ? savePoem() : toClipBoard(props.match.url.split('/')[2])}>generate link</button>
       </div>)
     } else {
       return (<div className={`share-buttons`}>
         <FacebookShareButton url={`https://ytpoet.now.sh${props.match.url}`} quote='check out my poem on #ytpoet: '><FacebookIcon size={20} round={false} /></FacebookShareButton>
-        try {<TwitterShareButton url={`https://ytpoet.now.sh${props.match.url}`} options={{ text: 'check out my poem on #ytpoet: ' }} />} catch {}
-        <button onClick={() => downloadPoem()}>download</button>
-        <button onClick={() => copyLink === 'new' ? savePoem() : toClipBoard(props.match.url.split('/')[2])}>copy link</button>
+        <TwitterShareButton url={`https://ytpoet.now.sh${props.match.url}`} options={{ text: 'check out my poem on #ytpoet: ' }} />
+        <button className='dl-copy-regen' onClick={() => downloadPoem()}>download</button>
+        <button className='dl-copy-regen' onClick={() => copyLink === 'new' ? savePoem() : toClipBoard(props.match.url.split('/')[2])}>copy link</button>
       </div>)
     }
   }
@@ -233,7 +233,7 @@ const Results = (props) => {
     return (
         <div className={`poem-results ${colorScheme}`}>
           <div className='back-regen-buttons'>
-            <Link to='/home'>back</Link><button disabled={options ? false : true} onClick={(e) => {
+            <Link to='/home'>back</Link><button className='dl-copy-regen' disabled={options ? false : true} onClick={(e) => {
                                                                             e.preventDefault()
                                                                             generatePoetry(options)
                                                                           }}>regenerate</button>

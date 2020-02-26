@@ -60,6 +60,11 @@ body {
   margin-top: 25px;
 }
 
+.dl-copy-regen {
+  background: none;
+  border: 1px solid black;
+}
+
 .hero-link {
   color: #df7cb5;
   font-style: none;
@@ -102,9 +107,15 @@ h2 {
   margin-right: auto;
   margin-top: 50px;
   text-align: left;
-  max-width: 700px;
-  background-color: lightgray;
+  max-width: 400px;
+  background-color: aquamarine;
+  border-radius: 4px;
   padding: 10px;
+  box-shadow: 5px 5px lightsalmon;
+  line-height: 27px;
+  animation-name: instructions;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
 }
 
 .continue-container {
@@ -117,7 +128,8 @@ h2 {
 
 .continue {
   font-size: 18px;
-  background-color: darkgray;
+  border: 1px solid black;
+  background: none;
 }
 
 .input {
@@ -300,7 +312,11 @@ fieldset {
   border-radius: 4px;
   background: black;
   color: white;
+}
 
+.intro-md {
+  width: 387px;
+  height: 450px;
 }
 
 footer {
@@ -308,7 +324,18 @@ footer {
   bottom: 15px;
   left: 15px;
   margin-top: 30px;
+}
 
+@media screen and (max-width: 420px) {
+  .instructions {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  .intro-md {
+    max-width: 280px;
+    width: 87vw;
+    height: 30vh;
+  }
 }
 
 @media screen and (max-width: 540px) {
@@ -356,4 +383,11 @@ footer {
   25% {text-shadow: black -5px 5px;}
   50% {text-shadow: black -5px -5px;}
   75% {text-shadow: black 5px -5px;}
+}
+
+@keyframes instructions {
+  0% {box-shadow: rgb(255, 134, 245) 5px 5px;}
+  25% {box-shadow: rgb(246, 202, 255) -5px 5px;}
+  50% {box-shadow: rgb(255, 180, 150) -5px -5px;}
+  75% {box-shadow: pink 5px -5px;}
 }
