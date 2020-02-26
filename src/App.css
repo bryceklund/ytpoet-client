@@ -63,6 +63,11 @@ body {
 .dl-copy-regen {
   background: none;
   border: 1px solid black;
+  height: 20px;
+}
+
+.dl-copy-regen:disabled {
+  border: none;
 }
 
 .hero-link {
@@ -332,7 +337,6 @@ footer {
     margin-right: 10px;
   }
   .intro-md {
-    max-width: 280px;
     width: 87vw;
     height: 30vh;
   }
