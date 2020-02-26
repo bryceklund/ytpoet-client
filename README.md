@@ -1,5 +1,6 @@
 # ytPoet | procedurally generated YouTube poetry
 Welcome! Check out the live app at https://ytpoet.bryceklund.dev/
+
 Server repo: https://github.com/bryceklund/ytpoet-server
 
 ## Technologies Used
