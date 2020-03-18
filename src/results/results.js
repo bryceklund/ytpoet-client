@@ -148,14 +148,14 @@ const Results = (props) => {
       .then(data => {
         return data.poemId
       })
-      .then(id => {
+      /*.then(id => {
         if (id) {
           toClipBoard(id)
         } else {
           copyToolTip('Failed to copy!')
           throw new Error('Failed to copy')
         }
-      })
+      })*/
       .catch(err => displayError(err))
   }
 
@@ -192,7 +192,7 @@ const Results = (props) => {
   }
   
   function toClipBoard(id) { //all set! just need a tooltip to notify on copy success/failure
-    let url = `https://ytpoet.now.sh/poem/${id}`
+    let url = `https://ytpoet.bryceklund.dev/poem/${id}`
     try {
       let textArea = document.createElement("textarea")
       textArea.value = url
