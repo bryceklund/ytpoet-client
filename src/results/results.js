@@ -148,14 +148,13 @@ const Results = (props) => {
       .then(data => {
         return data.poemId
       })
-      .then(id => console.log(id))/*{
+      .then(id => {
         if (id) {
-          toClipBoard(id)
+          history.push(`/poem/${id}`)
         } else {
-          copyToolTip('Failed to copy!')
-          throw new Error('Failed to copy')
+          throw new Error('Failed to save poem')
         }
-      })*/
+      })
       .catch(err => displayError(err))
   }
 
