@@ -148,7 +148,7 @@ const Results = (props) => {
       .then(data => {
         return data.poemId
       })
-      /*.then(id => {
+      .then(id => console.log(id))/*{
         if (id) {
           toClipBoard(id)
         } else {
